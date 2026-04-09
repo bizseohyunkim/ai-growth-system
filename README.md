@@ -1,52 +1,103 @@
-# 🚀 AI Growth System
+# AI Growth System
 
-Claude API 기반 B2B 세일즈 & 마케팅 자동화 시스템
+**B2B Sales & Marketing Automation powered by GPT-4o**  
+GPT-4o 기반 B2B 세일즈 & 마케팅 자동화 시스템
 
-## 📦 설치
+---
+
+## Overview / 프로젝트 개요
+
+AI Growth System is a local web application that automates B2B sales and marketing workflows using OpenAI's GPT-4o model. Each agent is powered by a structured YAML prompt and accessible through a clean Streamlit dashboard.
+
+LinkedIn에서 영감을 받아 직접 구현한 GPT-4o 기반 영업/마케팅 자동화 툴입니다. 9개의 전문 에이전트가 리드 발굴부터 딜 클로징까지 전체 세일즈 파이프라인을 커버합니다.
+
+---
+
+## Tech Stack / 기술 스택
+
+- **LLM**: OpenAI GPT-4o-mini
+- **UI**: Streamlit
+- **Prompt Management**: YAML
+- **Config**: python-dotenv
+
+---
+
+## Agents / 에이전트 목록
+
+| Agent | Description (EN) | 설명 (KR) |
+|---|---|---|
+| Lead Generation | Define ICP & prospect targeting strategy | ICP 정의 & 타겟 리스트 전략 |
+| Lead Qualification | BANT/MEDDIC-based lead scoring | BANT/MEDDIC 기반 리드 스코어링 |
+| Outreach Email | Personalized cold email generation | 개인화 콜드 이메일 자동 작성 |
+| Content Creation | LinkedIn / blog / Twitter content | LinkedIn·블로그·트위터 콘텐츠 생성 |
+| Content Strategy | Quarterly content planning | 분기별 콘텐츠 전략 플랜 |
+| Social Listening | Buyer signals & monitoring strategy | 바이어 시그널 & 모니터링 전략 |
+| SEO Analysis | Keyword clusters & organic growth | 키워드 클러스터 & 오가닉 성장 |
+| Founder Strategy | Startup GTM & growth playbook | 스타트업 GTM & 성장 전략 |
+| Deal Acceleration | Sales deal closing strategy | 세일즈 딜 클로징 전략 |
+
+---
+
+## Project Structure / 프로젝트 구조
+
+```
+ai-growth-system/
+├── agents/
+│   ├── base.py          # OpenAI API client & shared logic
+│   └── __init__.py      # All agent functions
+├── prompts/
+│   └── *.yaml           # Per-agent prompt templates
+├── ui/
+│   └── app.py           # Streamlit dashboard
+├── .env.example         # Environment variable template
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Getting Started / 시작하기
+
+### 1. Install dependencies / 의존성 설치
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## ⚙️ 설정
+### 2. Set up environment / 환경 변수 설정
 
 ```bash
 cp .env.example .env
-# .env 파일에 ANTHROPIC_API_KEY 입력
 ```
 
-## 🚀 실행
+Open `.env` and add your OpenAI API key:
+
+```
+OPENAI_API_KEY=sk-proj-...
+```
+
+### 3. Run / 실행
 
 ```bash
 streamlit run ui/app.py
 ```
 
-## 🤖 에이전트 목록
+Open `http://localhost:8501` in your browser.
 
-| 에이전트 | 설명 |
-|---|---|
-| 리드 발굴 | ICP 정의 & 타겟 리스트 전략 |
-| 리드 자격 분석 | BANT/MEDDIC 기반 스코어링 |
-| 아웃리치 이메일 | 개인화 콜드 이메일 생성 |
-| 콘텐츠 생성 | LinkedIn/블로그/트위터 콘텐츠 |
-| 콘텐츠 전략 | 분기별 콘텐츠 플랜 |
-| 소셜 리스닝 | 바이어 시그널 & 모니터링 전략 |
-| SEO 분석 | 키워드 클러스터 & 오가닉 성장 |
-| 파운더 전략 | 스타트업 GTM & 성장 전략 |
-| 딜 가속화 | 세일즈 딜 클로징 전략 |
+---
 
-## 🗂️ 프로젝트 구조
+## How It Works / 작동 방식
 
-```
-ai-growth-system/
-├── agents/
-│   ├── base.py          # Claude API 연결 & 공통 로직
-│   └── __init__.py      # 모든 에이전트 함수
-├── prompts/
-│   └── *.yaml           # 에이전트별 프롬프트
-├── ui/
-│   └── app.py           # Streamlit 대시보드
-├── .env.example
-├── requirements.txt
-└── README.md
-```
+1. Select an agent from the left panel
+2. Enter your context in the text box (company info, prospect details, topic, etc.)
+3. Click **Run** — GPT-4o generates a structured, actionable output
+
+각 에이전트는 `prompts/` 폴더의 YAML 파일로 관리됩니다. 프롬프트만 수정하면 동작 방식을 코드 없이 바꿀 수 있습니다.
+
+---
+
+## Notes / 참고
+
+- API key is never committed to this repo (`.gitignore` applied)
+- All prompts are in English for optimal GPT-4o performance
+- Prompts can be freely customized in `prompts/*.yaml`

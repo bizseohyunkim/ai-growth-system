@@ -9,7 +9,6 @@ GPT-4o 기반 B2B 세일즈 & 마케팅 자동화 시스템
 
 AI Growth System is a local web application that automates B2B sales and marketing workflows using OpenAI's GPT-4o model. Each agent is powered by a structured YAML prompt and accessible through a clean Streamlit dashboard.
 
-LinkedIn에서 영감을 받아 직접 구현한 GPT-4o 기반 영업/마케팅 자동화 툴입니다. 9개의 전문 에이전트가 리드 발굴부터 딜 클로징까지 전체 세일즈 파이프라인을 커버합니다.
 
 ---
 
